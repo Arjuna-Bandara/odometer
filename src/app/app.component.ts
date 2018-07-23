@@ -14,5 +14,7 @@ import { theme } from 'admin-lte';
 
 export class AppComponent {
   title = 'Odometer';
-  name = 'jkjkl';
+  name = 'test';
+
+  
 }
