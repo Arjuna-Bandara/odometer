@@ -1,0 +1,64 @@
+<br><br><br>
+<div class="row">
+    <div class="col-3"></div>
+    <label for="example-text-input" >Vehicle number:</label>
+    <div class="col-4">
+      <input class="form-control" type="text" value="" id="example-text-input">
+    </div>
+    <button>Search</button>
+    <div class="col-4"></div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-2">
+
+  </div>
+  <div class="col-8">
+      <div class="card-deck">
+          <div class="card border-primary mb-3">
+            <div class="card-body">
+              <h5 class="card-title">CREATE</h5>
+              <p class="card-text">Press the below button to add a user/vehicle to the database</p>
+            </div>
+            <div class="card-footer">
+                <button (click)="create()">Go</button>
+                <!--div class="row">
+                  <div class="col-2"></div><button (click)="create()">User</button>
+                  <div class="col-2"><button (click)="create()">Vehicle</button></div>
+                </div-->
+            </div>
+          </div>
+          <div class="card border-success mb-3">
+            <div class="card-body">
+              <h5 class="card-title">READ</h5>
+              <p class="card-text">See who are the users registered uo to date</p>
+            </div>
+            <div class="card-footer">
+                <button (click)="read()">Go</button>
+            </div>
+          </div>
+          <div class="card border-warning mb-3">
+            <div class="card-body">
+              <h5 class="card-title">UPDATE</h5>
+              <p class="card-text">Update a record of given vehicle or user</p>
+            </div>
+            <div class="card-footer">
+                <button (click)="update()">Go</button>
+            </div>
+          </div>
+          <div class="card border-danger mb-3">
+              <div class="card-body">
+                <h5 class="card-title">DELETE</h5>
+                <p class="card-text">Use below button to delete a recod from the database</p>
+              </div>
+              <div class="card-footer">
+                <button (click)="delete()">Go</button>
+              </div>
+            </div>
+      </div>
+  </div>
+  <div class="col-2">
+      
+  </div>
+</div>
+  

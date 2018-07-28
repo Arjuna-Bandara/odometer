@@ -1,0 +1,36 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <table align="center">
+    <tr><br><br><br><br><br><br><br><br><br><h1>Login Here<!--a routerLink="/sign-in">Login Here</a--></h1></tr>
+    <tr>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup"></label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">User name</div>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="user" name="user">
+        </div>
+      </div>      
+    </tr>
+    <tr>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup"></label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Password</div>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="pwd" name="pwd">
+        </div>
+      </div>      
+    </tr>
+    <tr>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </tr>
+    <tr>
+      <!--input type="text" value="{{list}}" disabled-->
+      {{list}}
+    </tr>
+  </table>
+</form>
