@@ -14,6 +14,7 @@ import { CreateComponent } from './users/create/create.component';
 import { ReadComponent } from './users/read/read.component';
 import { UpdateComponent } from './users/update/update.component';
 import { DeleteComponent } from './users/delete/delete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

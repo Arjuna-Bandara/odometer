@@ -14,3 +14,5 @@ button.btn-submit{
 button.btn-submit:focus,button.btn-submit:hover{
     background-color: #38547b;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
