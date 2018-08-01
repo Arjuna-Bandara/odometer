@@ -68,11 +68,12 @@ router.route('/vehicles/update/:id').post((req, res) => {
         else
         {
             vehicle.vehicleNo = req.body.vehicleNo;
-            vehicle.testResults.push(req.body.testResults);
+            vehicle.testResults = req.body.testResults;
 
             vehicle.save().then(vehicle => {
                 res.json('Updated');
             }).catch(err => {
+                console.log(err);
                 res.status(400).send('failed');
             });
         }

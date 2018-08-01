@@ -1,3 +1,56 @@
-<p>
-  create works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add a new vehicle</h3>
+    </section>
+    <mat-divider></mat-divider>
+      <br>
+    <form [formGroup]="createForm" class="create-form">
+
+      <div>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Vehicle Registration Number" formControlName="vehicleNo" #vehicleNo>
+        </mat-form-field>
+      </div>
+
+      <div formArrayName="testResults">
+          <div *ngFor="let testResult of createForm.controls.testResults.controls; let i=index">
+              <!-- address header, show remove button when more than one address available -->
+              <div>
+                  <span>testResult {{i + 1}}</span>
+                  <span *ngIf="createForm.controls.testResults.controls.length > 1" (click)="removeTestResult(i)">
+                  </span>
+              </div>
+
+              <div [formGroupName]="i">
+                  <div>
+                      <mat-form-field class="field-full-width">
+                        <input matInput placeholder="Date of test" formControlName="dateTime" #dateTime>
+                      </mat-form-field>
+                      <mat-form-field class="field-full-width">
+                        <input matInput placeholder="Odometer reading" formControlName="odometerReading" #odometerReading>
+                      </mat-form-field>
+                      <mat-form-field class="field-full-width">
+                        <input matInput placeholder="Vehicle Color" formControlName="vehicleColor" #vehicleColor>
+                      </mat-form-field>
+                      <mat-form-field class="field-full-width">
+                        <input matInput placeholder="Engine Number" formControlName="engineNo" #engineNo>
+                      </mat-form-field>
+                      <mat-form-field class="field-full-width">
+                        <input matInput placeholder="Chassis Number" formControlName="chassisNo" #chassisNo>
+                      </mat-form-field>
+                      <button mat-raised-button color="accent" (click)="removeTestResult(i)">Remove Test</button>
+                  </div>
+              </div>
+          </div>
+          <button mat-raised-button color="accent" (click)="addTestResult()">Add Test</button>
+      </div>
+
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/read">Back</button>
+      <button type="submit" (click)="addVehicle(vehicleNo.value, createForm.controls.testResults)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    
+    </form>
+  </mat-card>
+</div>

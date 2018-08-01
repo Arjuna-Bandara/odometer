@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule} from '@angular/common/http';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatIconModule, MatSelectModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -16,9 +18,13 @@ import { UpdateComponent } from './users/update/update.component';
 import { DeleteComponent } from './users/delete/delete.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { VehicleService} from './vehicle.service';
+
 const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'read', component: ReadComponent},
+  { path: 'update/:id', component: UpdateComponent}
 ];
 
 @NgModule({
@@ -37,6 +43,19 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    MatToolbarModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatOptionModule, 
+    MatIconModule,
+    MatSelectModule, 
+    MatButtonModule, 
+    MatCardModule, 
+    MatTableModule, 
+    MatDividerModule, 
+    MatSnackBarModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -44,7 +63,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
