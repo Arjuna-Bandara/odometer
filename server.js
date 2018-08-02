@@ -2,13 +2,21 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import logger from 'morgan';
 
 import Vehicle from './models/Vehicle'
-//import { next } from './node_modules/@types/q';
+
+var AuthenticationController = require('./src/app/controllers/authentication'), 
+    passportService = require('./src/config/passport'),
+    passport = require('passport');
+ 
+var requireAuth = passport.authenticate('jwt', {session: false}),
+    requireLogin = passport.authenticate('local', {session: false});
 
 const app = express();
 const router = express.Router();
 
+app.use(logger('dev'))
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -20,7 +28,12 @@ connection.once('open', () => {
     console.log('MongoDB db connection established.');
 });
 
+router.post('/register', AuthenticationController.register);
+router.post('/login', requireLogin, AuthenticationController.login);
 
+router.get('/protected', requireAuth, function(req, res){
+    res.send({ content: 'Success'});
+});
 
 router.route('/vehicles').get((req, res) => {
     Vehicle.find((err, vehicles) => {
