@@ -5,6 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatIconModule, MatSelectModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule} from '@angular/material';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { SignInComponent } from './users/sign-in/sign-in.component';
@@ -44,6 +50,13 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200'],
+        blacklistedRoutes: ['localhost:4200/auth/']
+      }
+    }),
     MatToolbarModule, 
     MatFormFieldModule, 
     MatInputModule, 

@@ -24,6 +24,8 @@ exports.login = function(req, res, next){
         token: 'JWT ' + generateToken(userInfo),
         user: userInfo
     });
+
+    localStorage.setItem('access_token', result.token);
 }
  
 exports.register = function(req, res, next){
@@ -68,6 +70,8 @@ exports.register = function(req, res, next){
                 token: 'JWT ' + generateToken(userInfo),
                 user: userInfo
             })
+
+            localStorage.setItem('access_token', result.token);
  
         });
  
