@@ -25,6 +25,7 @@
     "@angular/router": "^6.0.3",
     "@types/q": "^1.5.0",
     "admin-lte": "^2.4.8",
+    "angular-storage": "0.0.15",
     "bcrypt": "^3.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",

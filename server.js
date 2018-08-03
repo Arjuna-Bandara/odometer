@@ -35,7 +35,7 @@ router.get('/protected', requireAuth, function(req, res){
     res.send({ content: 'Success'});
 });
 
-router.route('/vehicles').get((req, res) => {
+router.get('/vehicles', requireAuth, (req, res) => {
     Vehicle.find((err, vehicles) => {
         if (err) 
         {
@@ -47,6 +47,19 @@ router.route('/vehicles').get((req, res) => {
         }
     });
 });
+
+// router.route('/vehicles').get((req, res) => {
+//     Vehicle.find((err, vehicles) => {
+//         if (err) 
+//         {
+//             console.log(err);
+//         }
+//         else
+//         {
+//             res.json(vehicles)
+//         }
+//     });
+// });
 
 router.route('/vehicles/:id').get((req, res) => {
     Vehicle.findById(req.params.id, (err, vehicle) => {
