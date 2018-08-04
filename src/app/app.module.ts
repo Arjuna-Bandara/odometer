@@ -25,12 +25,17 @@ import { DeleteComponent } from './users/delete/delete.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { VehicleService} from './vehicle.service';
+import { UserService} from './user.service';
+import { SearchComponent } from './users/search/search.component';
+import { ShowVehicleComponent } from './users/show-vehicle/show-vehicle.component';
 
 const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'users', component: UsersComponent },
   { path: 'read', component: ReadComponent},
-  { path: 'update/:id', component: UpdateComponent}
+  { path: 'update/:id', component: UpdateComponent},
+  { path: 'search', component: SearchComponent},
+  { path: 'search/:regNo', component: ShowVehicleComponent}
 ];
 
 @NgModule({
@@ -44,7 +49,9 @@ const appRoutes: Routes = [
     CreateComponent,
     ReadComponent,
     UpdateComponent,
-    DeleteComponent
+    DeleteComponent,
+    SearchComponent,
+    ShowVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [VehicleService],
+  providers: [VehicleService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

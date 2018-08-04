@@ -31,11 +31,7 @@ connection.once('open', () => {
 router.post('/register', AuthenticationController.register);
 router.post('/login', requireLogin, AuthenticationController.login);
 
-router.get('/protected', function(req, res){
-
-});
-
-router.get('/vehicles', requireAuth, (req, res) => {
+router.get('/vehicles', (req, res) => {
     Vehicle.find((err, vehicles) => {
         if (err) 
         {
@@ -70,6 +66,17 @@ router.route('/vehicles/:id').get((req, res) => {
         else
         {
             res.json(vehicle)
+        }
+    });
+});
+
+router.route('/search/:regNo').get((req, res) => {
+    Vehicle.find({vehicleNo: req.params.regNo}, (err, vehicle) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.json(vehicle);
         }
     });
 });

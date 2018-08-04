@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import { UserService } from '../user.service';
+
+import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-users',
@@ -8,15 +11,21 @@ import {Router} from '@angular/router'
 })
 export class UsersComponent implements OnInit {
 
-  user:string;pwd:any;list=[]
-  adminActivate=false;userActivate:boolean
+  loginForm: FormGroup;
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) { 
+    this.loginForm = this.fb.group( {
+      email: ['', Validators.required],
+      pwd: ['', Validators.required]
+    });
   }
 
-  onSubmit(){
-    
+  login(email, password) {
+    this.userService.login(email, password).subscribe((user) => {
+      this.router.navigate([`/search`]);
+    })
+  };
+
+  ngOnInit() {
   }
 }

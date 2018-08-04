@@ -1,0 +1,21 @@
+<div>
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h3>Search for a vehicle</h3>
+      </section>
+      <mat-divider></mat-divider>
+        <br>
+      <form [formGroup]="searchForm">
+  
+        <div>
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="Vehicle Registration Number" formControlName="vehicleNo" #vehicleNo>
+          </mat-form-field>
+        </div>
+        <br><br>
+        <button type="submit" (click)="search(vehicleNo.value)" [disabled]="searchForm.pristine || searchForm.invalid" mat-raised-button color="primary">Search</button>
+      
+      </form>
+    </mat-card>
+  </div>

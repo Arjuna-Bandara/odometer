@@ -25,7 +25,7 @@ exports.login = function(req, res, next){
         user: userInfo
     });
 
-    localStorage.setItem('access_token', result.token);
+    //localStorage.setItem('access_token', result.token);
 }
  
 exports.register = function(req, res, next){
@@ -71,7 +71,7 @@ exports.register = function(req, res, next){
                 user: userInfo
             })
 
-            localStorage.setItem('access_token', result.token);
+            //localStorage.setItem('access_token', result.token);
  
         });
  

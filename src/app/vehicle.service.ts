@@ -17,6 +17,10 @@ export class VehicleService {
     return this.http.get(`${this.uri}/vehicles/${id}`);
   };
 
+  getVehicleByReg(regNo) {
+    return this.http.get(`${this.uri}/search/${regNo}`);
+  };
+
   addVehicle(vehicleNo, testResults) {
     const vehicle = {
       vehicleNo: vehicleNo,
